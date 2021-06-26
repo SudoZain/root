@@ -1012,6 +1012,9 @@ section.buttons .container-fluid {
     width: 420px;
     padding: 0px 50px;
     top:0;
+    -moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+    -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+    -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 }
 
 #sidebar > .inner > #search  {
@@ -1021,6 +1024,9 @@ section.buttons .container-fluid {
     display: inline-block;
     margin-left: -50px;
     top:0;
+    -moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+    -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+    -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 }
 #sidebar > .inner > #search input {
 	width: 100%;
@@ -1030,6 +1036,9 @@ section.buttons .container-fluid {
 	padding: 0px 50px;
 	color: #fff;
 	top:0;
+	-moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+        -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+        -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 }
 
 #search form:before {
