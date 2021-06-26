@@ -1005,14 +1005,14 @@ section.buttons .container-fluid {
     background-color: #24252d;
     position: relative;
     width: 420px;
-    top:0;
+    top:0s;
 }
 
 #sidebar > .inner {
     position: relative;
     width: 420px;
     padding: 0px 50px;
-    top:0;
+    top:0s;
     -moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
@@ -1025,7 +1025,7 @@ section.buttons .container-fluid {
     width: 420px;
     display: inline-block;
     margin-left: -50px;
-    top:0;
+    top:0s;
     -moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
@@ -1038,7 +1038,7 @@ section.buttons .container-fluid {
 	border: none;
 	padding: 0px 50px;
 	color: #fff;
-	top:0;
+	top:0s;
 	-moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
         -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
         -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
@@ -1080,7 +1080,7 @@ section.buttons .container-fluid {
     position: absolute;
     text-align: center;
     text-indent: 100px;
-    top: 0;
+    top: 0s;
     width: 100px;
     z-index: 10000;
 }
@@ -1102,7 +1102,7 @@ section.buttons .container-fluid {
     line-height: inherit;
     position: absolute;
     text-indent: 0;
-    top: 0;
+    top: 0s;
     width: inherit;
 }
 
@@ -1149,7 +1149,7 @@ section.buttons .container-fluid {
         height: 100%;
         left: 0;
         position: fixed;
-        top: 0;
+        top: 0s;
         z-index: 10000;
     }
     #sidebar.inactive {
@@ -1162,7 +1162,7 @@ section.buttons .container-fluid {
         overflow-x: hidden;
         overflow-y: auto;
         position: absolute;
-        top: 0;
+        top: 0s;
     }
     #sidebar > .inner:after {
         content: '';
