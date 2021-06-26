@@ -1006,6 +1006,7 @@ section.buttons .container-fluid {
     position: relative;
     width: 420px;
     top:0s;
+    left: 0px;
 }
 
 #sidebar > .inner {
@@ -1017,6 +1018,7 @@ section.buttons .container-fluid {
     -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -moz-transition-property: color;
+    left: 0px;
 }
 
 #sidebar > .inner > #search  {
@@ -1030,6 +1032,7 @@ section.buttons .container-fluid {
     -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -moz-transition-property: color;
+    left: 0px;
 }
 #sidebar > .inner > #search input {
 	width: 100%;
@@ -1043,6 +1046,7 @@ section.buttons .container-fluid {
         -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
         -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 	-moz-transition-property: color;
+	left: 0px;
 }
 
 #search form:before {
@@ -1060,6 +1064,7 @@ section.buttons .container-fluid {
     text-align: center;
     top: 35px;
     font-size: 18px;
+    left: 0px;
 }
 
 #sidebar .toggle {
@@ -1092,13 +1097,14 @@ section.buttons .container-fluid {
     font-style: normal;
     font-weight: normal;
     text-transform: none !important;
+    left: 0px;
 }
 
 #sidebar .toggle:before {
     content: '\f0c9';
     font-size: 2rem;
     height: inherit;
-    left: 0;
+    left: 0px;
     line-height: inherit;
     position: absolute;
     text-indent: 0;
