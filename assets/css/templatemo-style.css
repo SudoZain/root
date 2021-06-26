@@ -1001,24 +1001,15 @@ section.buttons .container-fluid {
     -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-    -moz-transition-property: color;
     background-color: #24252d;
     position: relative;
     width: 420px;
-    top:0s;
-    left: 0px;
 }
 
 #sidebar > .inner {
     position: relative;
     width: 420px;
     padding: 0px 50px;
-    top:0s;
-    -moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-    -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-    -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-    -moz-transition-property: color;
-    left: 0px;
 }
 
 #sidebar > .inner > #search  {
@@ -1027,12 +1018,6 @@ section.buttons .container-fluid {
     width: 420px;
     display: inline-block;
     margin-left: -50px;
-    top:0s;
-    -moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-    -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-    -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-    -moz-transition-property: color;
-    left: 0px;
 }
 #sidebar > .inner > #search input {
 	width: 100%;
@@ -1041,12 +1026,6 @@ section.buttons .container-fluid {
 	border: none;
 	padding: 0px 50px;
 	color: #fff;
-	top:0s;
-	-moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-        -webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-        -ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
-	-moz-transition-property: color;
-	left: 0px;
 }
 
 #search form:before {
@@ -1064,7 +1043,6 @@ section.buttons .container-fluid {
     text-align: center;
     top: 35px;
     font-size: 18px;
-    left: 0px;
 }
 
 #sidebar .toggle {
@@ -1085,7 +1063,7 @@ section.buttons .container-fluid {
     position: absolute;
     text-align: center;
     text-indent: 100px;
-    top: 0s;
+    top: 0;
     width: 100px;
     z-index: 10000;
 }
@@ -1097,18 +1075,17 @@ section.buttons .container-fluid {
     font-style: normal;
     font-weight: normal;
     text-transform: none !important;
-    left: 0px;
 }
 
 #sidebar .toggle:before {
     content: '\f0c9';
     font-size: 2rem;
     height: inherit;
-    left: 0px;
+    left: 0;
     line-height: inherit;
     position: absolute;
     text-indent: 0;
-    top: 0s;
+    top: 0;
     width: inherit;
 }
 
@@ -1155,7 +1132,7 @@ section.buttons .container-fluid {
         height: 100%;
         left: 0;
         position: fixed;
-        top: 0s;
+        top: 0;
         z-index: 10000;
     }
     #sidebar.inactive {
@@ -1168,7 +1145,7 @@ section.buttons .container-fluid {
         overflow-x: hidden;
         overflow-y: auto;
         position: absolute;
-        top: 0s;
+        top: 0;
     }
     #sidebar > .inner:after {
         content: '';
