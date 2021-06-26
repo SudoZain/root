@@ -1004,6 +1004,7 @@ section.buttons .container-fluid {
     background-color: #24252d;
     position: relative;
     width: 420px;
+    top:0;
 }
 
 #sidebar > .inner {
