@@ -1541,3 +1541,11 @@ section.buttons .container-fluid {
     margin-top: 0;
     padding-top: 0;
 }
+
+box-ans {
+  background-color: lightgrey;
+  width: 500px;
+  border: 5px solid purple;
+  padding: 40px;
+  margin: 20px;
+}
