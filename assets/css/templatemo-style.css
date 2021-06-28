@@ -1259,14 +1259,14 @@ section.buttons .container-fluid {
 
 .tw-logo {
 	width: 45px;
-	margin-left: 10px;
+	margin-left: 0px;
 	color: #3095d3;
 	float: left;
 }
 
 .tw-logo:hover {
 	width: 45px;
-	margin-left: 10px;
+	margin-left: 0px;
 	color: #41a6e4;
 	float: left;
 }
@@ -1303,7 +1303,7 @@ section.buttons .container-fluid {
 
 .thm-logo2 {
 	width: 50px;
-	margin-left: 20px;
+	margin-left: 5px;
 	float: left;
 	border-radius: 2px 5px; 
 	padding: 3px;
@@ -1312,7 +1312,7 @@ section.buttons .container-fluid {
 
 .thm-logo2:hover {
 	width: 50px;
-	margin-left: 20px;
+	margin-left: 5px;
 	background: #2f2f36;
 	float: left;
 }
