@@ -1543,9 +1543,10 @@ section.buttons .container-fluid {
 }
 
 box-ans {
-  background-color: lightgrey;
-  width: 500px;
-  border: 5px solid purple;
-  padding: 40px;
-  margin: 100px;
+  border: 2px solid black;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+  background-color: lightblue;
 }
