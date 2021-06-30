@@ -1543,14 +1543,9 @@ section.buttons .container-fluid {
 }
 
 box-ans {
-  border: 2px solid black;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  margin-right: 150px;
-  margin-left: 80px;
-  background-color: lightblue;
-  width: 400px;
-  padding: 30px;
-  margin: 100px;
+    width: 300px;
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
 	
 }
