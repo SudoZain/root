@@ -26,14 +26,14 @@ a:hover {
 }
 
 p {
-	font-size: 20px;
+	font-size: 14px;
 	line-height: 25px;
 	color: #7a7a7a;
 	letter-spacing: 0.2px;
 }
 
 h4 {
-	font-size: 25px;
+	font-size: 19px;
 	font-weight: 700;
 	color: #31323a;
 	letter-spacing: 0.25px;
@@ -105,15 +105,13 @@ section {
     padding: 100px;
 }
 
-
-
 /* Banner */
 .main-banner .container-fluid {
 	padding-left: 0px;
 	padding-right: 0px;
 }
 .main-banner .banner-content {
-	background-image: url(../images/cybersec.jpg);
+	background-image: url(../images/main-banner.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -151,77 +149,6 @@ section {
 	margin-bottom: 30px;
 }
 
-/* LatestPosts */
-.latest-posts {
-	margin-top: 100px;
-}
-
-.latest-posts .container-fluid {
-	padding-left: 13px;
-	padding-right: 13px;
-}
-
-.latest-posts .col-md-4 {
-	padding-left: 2px;
-	padding-right: 2px;
-}
-
-.latest-posts .service-item {
-	margin-bottom: 3px;
-	background-color: #eaebef;
-	padding: 50px;
-	text-align: center;
-	transition: all 0.5s;
-}
-
-.latest-posts .service-item .icon {
-	width: 50px;
-	height: 50px;
-	display: inline-block;
-	margin-bottom: 30px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	transition: all 0.5s;
-}
-
-.latest-posts .first-item .icon {
-	background-image: url(../images/icon_01.png);
-}
-.latest-posts .first-item:hover .icon {
-	background-image: url(../images/icon_hover_01.png);
-}
-
-.latest-posts .second-item .icon {
-	background-image: url(../images/icon_02.png);
-}
-.latest-posts .second-item:hover .icon {
-	background-image: url(../images/icon_hover_02.png);
-}
-
-.latest-posts .third-item .icon {
-	background-image: url(../images/icon_03.png);
-}
-.latest-posts .third-item:hover .icon {
-	background-image: url(../images/icon_hover_03.png);
-}
-
-.latest-posts .service-item:hover {
-	background-color: #535ba0;
-}
-.latest-posts .service-item:hover h4,
-.latest-posts .service-item:hover p {
-	color: #fff;
-}
-
-.latest-posts .service-item h4 {
-	margin-bottom: 20px;
-	transition: all 0.5s;
-}
-
-.latest-posts .service-item  p {
-	margin-bottom: 0px;
-	transition: all 0.5s;
-}
 
 /* Services */
 
@@ -968,7 +895,7 @@ section.buttons .container-fluid {
 }
 
 .page-heading p {
-    font-size: 20px;
+    font-size: 15px;
     color: #4a4a4a;
 }
 
@@ -1227,104 +1154,13 @@ section.buttons .container-fluid {
 
 /* Featured Post */
 
-.fb-logo {
-	width: 45px;
-	margin-left: 10px;
-	float: left;
-	color: #4668b3;
-	border-radius: 10px;
-}
-
-.fb-logo:hover {
-	width: 45px;
-	margin-left: 10px;
-	float: left;
-	color: #5779c4;
-	border-radius: 10px;
-}
-
-.mail-logo {
-	width: 45px;
-	margin-left: 10px;
-	color: #505264;
-	float: left;
-}
-
-.mail-logo:hover {
-	width: 45px;
-	margin-left: 10px;
-	color: #616375;
-	float: left;
-}
-
-.tw-logo {
-	width: 45px;
-	margin-left: 0px;
-	color: #3095d3;
-	float: left;
-}
-
-.tw-logo:hover {
-	width: 45px;
-	margin-left: 0px;
-	color: #41a6e4;
-	float: left;
-}
-
-
-.htb-logo {
-	width: 30px;
-	margin-left: 10px;
-	float: left;
-}
-
-.htb-logo:hover {
-	width: 30px;
-	margin-left: 10px;
-	float: left;
-	background: #2f2f36;
-}
-
-.thm-logo {
-	width: 50px;
-	margin-left: 20px;
-	float: left;
-	border-radius: 2px 5px; 
-	padding: 3px;
-	background: #A0172A;
-}
-
-.thm-logo:hover {
-	width: 50px;
-	margin-left: 20px;
-	background: #2f2f36;
-	float: left;
-}
-
-.thm-logo2 {
-	width: 50px;
-	margin-left: 5px;
-	float: left;
-	border-radius: 2px 5px; 
-	padding: 3px;
-	background: #348042;
-}
-
-.thm-logo2:hover {
-	width: 50px;
-	margin-left: 5px;
-	background: #2f2f36;
-	float: left;
-}
-
 .featured-posts {
 	margin-top: 50px;
-	margin-bottom: 50px;
 	position: relative;
 	background-color: #1e1f25;
 	margin-left: -50px;
 	margin-right: -50px;
-	padding: 30px;
+	padding: 50px;
 }
 
 .featured-posts .heading h2 {
@@ -1358,27 +1194,8 @@ section.buttons .container-fluid {
 	background-color: #535ba0!important;
 }
 
-.search-logo {
-	width: 75px;
-	margin: 10px;
-	float: left;
-}
-
-.logo-text {
-	text-align: left;
-	padding-top: 25px;
-	color: #eeeeee;
-}
-
 
 /* Header */
-
-.main-logo {
-	margin-right: 20px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	width: 110px;
-}
 
 #header {
     display: -moz-flex;
@@ -1396,15 +1213,14 @@ section.buttons .container-fluid {
     width: 100%;
     height: 100px;
     line-height: 100px;
-	margin-top: 10px;
 }
 #header .logo a {
-	font-size: 50px;
-	letter-spacing: 10px;
+	font-size: 36px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 	color: #fff;
 	font-weight: 700;
-	margin-right: 20px;
-
+	margin-right: 100px;
 }
 
 
@@ -1540,12 +1356,4 @@ section.buttons .container-fluid {
     border-top: 0;
     margin-top: 0;
     padding-top: 0;
-}
-
-box-ans {
-    width: 300px;
-    border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
-	
 }
