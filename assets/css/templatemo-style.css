@@ -1401,6 +1401,7 @@ section.buttons .container-fluid {
 #header .logo a {
 	font-size: 50px;
 	letter-spacing: 10px;
+	text-transform: uppercase;
 	color: #fff;
 	font-weight: 700;
 	margin-right: 20px;
