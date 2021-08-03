@@ -75,10 +75,12 @@
             <p>&nbsp;</p>
             <h4>Spear-phishing</h4>
             <p>Targeted and personalized to an individual , group , or organization instead of a wide random group of people. An example of it is an email from an online store about a recent purchase. It might include a link to a login page where the scammer simply harvests your credentials. An automated phone call or text message from your bank stating that your account may have been breached.</p>
-            <h4>Spear phishing has another 2 types , let's talk about them : [Spear-phishing attachment , Spear-phishing Links]</h4>
+            <p>Spear phishing has another 2 types , let's talk about them : [Spear-phishing attachment , Spear-phishing Links]</p>
             <p>&nbsp;</p>
             <h4>Spearphishing Attachment</h4>
-            <p>Is sending spearphishing emails with a malicious attachment in an attempt to gain access to victim systems. There are many options for the attachment such as Microsoft Office documents, executables, PDFs, or archived files , so when the end user open that attachment , the adversary's payload (malicious code) exploits a vulnerability found on that system , or make a reverse shell with the attacker . The form of text of this kind of spearphishing tries to give a reason why this file should be opened , an example of this is injecting a payload (malicious code) inside a PDF file that claimed it is a CV for an employee . Let me give you a bonus about advanced technique for this attack to evade an Anti-virus is to encrypt the attachment then let the user decrypt it , one simple example about this is to zip the PDF file then when the user unzip it , and open it , the firewall may not detect it .</p>
+            <p>Is sending spearphishing emails with a malicious attachment in an attempt to gain access to victim systems. There are many options for the attachment such as Microsoft Office documents, executables, PDFs, or archived files.</p>
+            <p>so when the end user open that attachment , the adversary's payload (malicious code) exploits a vulnerability found on that system , or make a reverse shell with the attacker . </p>
+            <p>The form of text of this kind of spearphishing tries to give a reason why this file should be opened , an example of this is injecting a payload (malicious code) inside a PDF file that claimed it is a CV for an employee . Let me give you a bonus about advanced technique for this attack to evade an Anti-virus is to encrypt the attachment then let the user decrypt it , one simple example about this is to zip the PDF file then when the user unzip it , and open it , the firewall may not detect it .</p>
             <p>&nbsp;</p>
             <p>A real world example for this attack is when APT12 sent emails with malicious Microsoft Office documents and PDFs attached. How this attack happened ? When the APT12 sent a phish email to a Taiwanese government ministry, attached to this email a malicious Microsoft Word document that exploits a remote code execution vulnerability exists in the Windows common controls when the end user open it.</p>
             <p>&nbsp;</p>
@@ -95,27 +97,33 @@
             <p><img src="./images/zphisher.png" alt="" /></p>
             <p>How to defend against it .. ? Using anti-spoofing and email authentication mechanisms to filter messages . Training users to identify spear-phishing emails with malicious links . Determining if the website can be used for spear-phishing are necessary business operation.</p>
             <p>Now let's complete the other types of phishing </p>
+            <p>&nbsp;</p>
             <h4>Voice phishing (vishing)</h4>
             <p>Using of phone calls to trick people into giving money or revealing personal information , its old name was telephone scams . Example : a phone call about a free offer or telling you that you've won a prize.</p>
             <p>How this attack happened ? By using automated calls to steal confidential information .</p>
+            <p>&nbsp;</p>
             <h4>Techniques ?</h4>
             <p>Make any call from a spoofed caller ID , which make the attack looks like it comes from a known number . Or use VOIP technology to make the calls [for example Skype]</p>
-            <h4>How to defend against it ?</h4>
+ 	    <p>&nbsp;</p>
+	    <h4>How to defend against it ?</h4>
             <p>A) Do not enter your phone number into any online forums.</p>
             <p>B) Never call back a number left via a Voicemail , alway contact the organization directly .</p>
             <p>C) Use multi-factor authentication (MFA) on all online accounts.</p>
             <p>&nbsp;</p>
             <h4>Social media phish</h4>
             <p>Using of social media platforms [Facebook , Twitter , or Instagram] to steal personal data . Examples about this type are fake comments on popular posts. Or fake live-stream videos.</p>
-            <h4>Techniques ?</h4>
+	    <p>&nbsp;</p>
+	    <h4>Techniques ?</h4>
             <p><img src="./images/socialMediaComment.png" alt="" /></p>
             <p>Collect detailed information about the victim , preparing to attack according to information they have .</p>
             <p>&nbsp;</p>
             <h4>Whaling Phishing</h4>
             <p>Targeted executives and high profiles end users like CEOs , managers . Example about this attack : sending an email to a CEO requesting payment , pretending to be a client of the company .</p>
-            <h4>Techniques ?</h4>
+            <p>&nbsp;</p>
+	    <h4>Techniques ?</h4>
             <p>spending time profiling the target to find the oppurtune moment to steal login credentials .</p>
-            <h4>How to defend against this attack </h4>
+            <p>&nbsp;</p>
+	    <h4>How to defend against this attack </h4>
             <p>beaware of clicking links or attachments in emails .</p>
             <p>&nbsp;</p>
             <h4>As we mentioned above , this attack is very dangerous and may causes financial losses . The most important defese factor is implementing a phishing awareness training program for senior management and public-facing employees about the phishing and its types . </h4>
