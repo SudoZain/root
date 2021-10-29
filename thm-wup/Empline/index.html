@@ -60,7 +60,7 @@
 
             <!-- Simple Post -->
             <section class="simple-post">
-              <div class="container-fluid">
+             <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-12">
                     <img src="./images/empline.png" alt="" style="width:800px;height:400px;display: block;margin-left: auto;margin-right: auto">
@@ -73,8 +73,8 @@
 <h1>Section 1: ENUMURATION</h1>
 <h1>========================</h1>
     <h4> 1) Scanning ports </h4>
-    <p> As always, we start our enum with nmap scanning ports. <br>
-        Commnad: nmap -sSCV -O 10.10.247.178 </p>
+    <p> As always, we start our enum with nmap scanning ports. </p>
+Commnad: <pre class="bash">nmap -sSCV -O 10.10.247.178</pre>
     <img src="./images/1.png" alt="" style="width:800px;height:500px;display: block;margin-left: auto;margin-right: auto">
     <p> From the result, we noted that there is 3 open ports: <br>
         - 22 ssh     <br>
@@ -87,15 +87,16 @@
     <p> This is a static website that does't contain any useful information. </p> <br>
     
     <h4> 3) So now, let's enumurate hidden directories and files in the target.</h4>
-    <p> Command: ffuf -u http://10.10.114.37/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt <br><br>
+    Command: 
+<pre class="bash">ffuf -u http://10.10.114.37/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt </pre>
     <img src="./images/3.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto"> <br><br>
-        - It turned out that there are 3 hidden directories: assets, javascript, server-status. After surfing these directories I didn't note any useful information. </p>
+       <p> - It turned out that there are 3 hidden directories: assets, javascript, server-status. After surfing these directories I didn't note any useful information. </p>
     <br>
     <h4> 4) Brute force subdomains </h4>
     <p> From my experience with CTF's there are often hidden subdomains. To do this, first of all we need to add “empline.thm” domain to our /etc/hosts file. As below: </p>
     <img src="./images/4.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto"> 
-    <p> Now for this purpose I will use my favourite tool, which is: ffuf <br>
-Command: ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H 'HOST: FUZZ.empline.thm' -fs 14058 </p>
+    <p> Now for this purpose I will use my favourite tool, which is: ffuf </p>
+Command: <pre class="bash"> ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H 'HOST: FUZZ.empline.thm' -fs 14058 </pre>
     <img src="./images/5.png" alt="" style="width:500px;height:80px;display: block;margin-left: auto;margin-right: auto"> 
     <p> In the result, we get  two subdomains “job” and “www.job” <br>
         Before visiting the page job.empline.thm, we need to add this subdomain to /etc/hosts file. <br>
@@ -111,7 +112,7 @@ Command: ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subd
     
     <br>
     <h4>6) Enum hidden directories in the subdomain job.empline.thm using “gobuster”</h4>
-    <p>Command: gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -u http://job.empline.thm</p>
+    Command: <pre class="bash">gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -u http://job.empline.thm</pre>
     <img src="./images/25.png" alt="" style="width:1000px;height:700px;display: block;margin-left: auto;margin-right: auto"> 
     <p>We can see that there are several directories. After trying a few of them, we choose /careers directory.</p>
     
@@ -136,8 +137,8 @@ Command: ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subd
     <p>After googling, I found that this version of this application suffer from XML External Entity Injection vulnerability that allows unautheticated applicants to read             files on the running operating system after uploading a resume with .docx file. I found this on the following <a href="https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/">page</a>:</p>
     <p> According to the tutorial on the page, we need to do the following steps: <br>
     1) Create a resume.docx file with sample text, e.g.: John Brown <br>
-    2) Unzip the resume.docx file and modify the contents in “word/document.xml” <br>
-        Command: unzip resume.docx </p>
+    2) Unzip the resume.docx file and modify the contents in “word/document.xml” </p>
+Command: <pre class="bash">unzip resume.docx </pre>
      <img src="./images/7.png" alt="" style="width:500px;height:300px;display: block;margin-left: auto;margin-right: auto">
     <h4>3) Modify and edit the word/document.xml file. Two modifications are needed. </h4>
         <h4>3.1) Add this command under the first line to read /etc/passwd file. </h4><h4><br>
@@ -148,11 +149,10 @@ Command: ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subd
     <img src="./images/10.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto"> <br>
     <img src="./images/11.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
     
-    <h4>4) The modifications to document.xml need to be saved to the resume.docx file. </h4><h4>
-        Command: zip resume.docx word/document.xml<p></p>
+    <h4>4) The modifications to document.xml need to be saved to the resume.docx file. </h4>    Command: <pre class="bash">zip resume.docx word/document.xml</pre>
     <img src="./images/12.png" alt="" style="width:500px;height:50px;display: block;margin-left: auto;margin-right: auto">
     
-    </h4><h4>5) Now just upload the resume.docx file to opencats form.</h4>
+<h4>5) Now just upload the resume.docx file to opencats form.</h4>
     <img src="./images/17.png" alt="" style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto">
     <p>- Once the resume.docx file is uploaded then the contents of /etc/passwd was shown.</p>
     
@@ -164,20 +164,20 @@ Command: ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subd
          <img src="./images/19.png" alt="" style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto"> <br> </p>
          
                         <h4>7) Now lets decode the base64 encoded contents of config.php</h4>
-                        <p>- Create and copy the encoded contents to “config.php” file. Then decode it using “base64” tool. <br>
-                            Command: cat config.php | base64 -d </p>
+                        <p>- Create and copy the encoded contents to “config.php” file. Then decode it using “base64” tool. </p>
+                            Command:<pre class="bash"> cat config.php | base64 -d </pre>
          
                         <h4>8) Credentials obtained from the decoded config.php file</h4>    
                         <img src="./images/26.png" alt="" style="width:500px;height:200px;display: block;margin-left: auto;margin-right: auto">
                         
                         <h4>9) Using above creds, we can login to mysql server as user:james and password:ng6pUFvsGNtw</h4>
-                        <p>Command: mysql -h empline.thm -u james -p</p>
+                        Command:<pre class="bash"> mysql -h empline.thm -u james -p</pre>
     
                         <h4>10) Show all databases on this server</h4>
                         <img src="./images/27.png" alt="" style="width:400px;height:200px;display: block;margin-left: auto;margin-right: auto">
                         
                         <h4>11) Choose the opencats database</h4>
-                        <p>Command: MariaDB [(none)]&gt; use opencats </p>
+                        Command: <pre class="bash">MariaDB [(none)]&gt; use opencats </pre>
                         
                         <h4>12) Show all tables in this database</h4>
                         <img src="./images/28.png" alt="" style="width:400px;height:200px;display: block;margin-left: auto;margin-right: auto">
@@ -211,7 +211,7 @@ Command: ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subd
                         <p>After a long search about misconfigurations in the system, finally I found the linux capabilities misconfiguration.</p>
                         
                         <h4>1) Search about Linux capabilities</h4>
-                        <p>Command: getcap -r / 2&gt; /dev/null</p>
+                        Command: <pre class="bash">getcap -r / 2&gt; /dev/null</pre>
                          <img src="./images/23.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
                         <p>- From the previous result we can see that “ruby" binary has the Linux cap_chown capability set. This capability allow  user to make arbitrary change to files UIDs and GIDs (full filesystem access). <br>
                             - So we can use chown function to change the user and group of /etc/shadow to be george/george. Then edit and modify the password of root.<br></p>
@@ -220,20 +220,20 @@ Command: ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subd
                          <img src="./images/30.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
                         
                         <h4>3) run the script using ruby</h4>
-                        <p>Command: ruby exploit.rb</p>
+                        Command:<pre class="bash"> ruby exploit.rb</pre>
                         
                         <h4>4) create a new hashed password using openssl tool.</h4>
-                        <p>Command: openssl passwd -1 -salt abc newpassword<br>
+                        Command: <pre class="bash"> openssl passwd -1 -salt abc newpassword</pre>
                            -1: MD5-based password alogrithm <br>
                            -salt abc: the salt is ‘abc’ <br>
-                            the password is: newpassword <br> </p>
+                            the password is: newpassword <br> <p></p>
                          <img src="./images/31.png" alt="" style="width:600px;height:80px;display: block;margin-left: auto;margin-right: auto">
                         
                         <h4>5) then copy this hash and replace the root's hash in the /etc/shadow file</h4>
                          <img src="./images/32.png" alt="" style="width:600px;height:80px;display: block;margin-left: auto;margin-right: auto">
                         
                         <h4>6) login as root with password "newpassword"</h4>
-                        <p>Command: su root</p>
+                        Command:<pre class="bash"> su root</pre>
                         
                         <p>Congratulations!!! You are now ROOT !
                             
