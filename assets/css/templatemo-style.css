@@ -32,6 +32,14 @@ p {
 	letter-spacing: 0.2px;
 }
 
+pre.bash {
+  background-color: black;
+  color: white;
+  font-size: medium ; 
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  display: inline; 
+}
+
 h4 {
 	font-size: 25px;
 	font-weight: 700;
