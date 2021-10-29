@@ -79,7 +79,7 @@ Commnad: <pre class="bash">nmap -sSCV -O 10.10.247.178</pre>
     <p> From the result, we noted that there is 3 open ports: <br>
         - 22 ssh     <br>
         - 80 http    Apache httpd 2.4.29 ((Ubuntu)) <br>
-        - 3306 mysql   MySQL 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1 <br>
+        - 3306 mysql   MySQL 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1 <br><br>
     In addition, I scanned all the ports to just make sure that there are no other open ports. As I expected only these 3 ports were open.
         </p> <br>
     <h4> 2) Let's visit the webpage running on port 80</h4> <br>
@@ -99,13 +99,14 @@ Commnad: <pre class="bash">nmap -sSCV -O 10.10.247.178</pre>
 Command: <pre class="bash"> ffuf -u http://empline.thm -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H 'HOST: FUZZ.empline.thm' -fs 14058 </pre>
     <img src="./images/5.png" alt="" style="width:500px;height:80px;display: block;margin-left: auto;margin-right: auto"> 
     <p> In the result, we get  two subdomains “job” and “www.job” <br>
-        Before visiting the page job.empline.thm, we need to add this subdomain to /etc/hosts file. <br>
-        <img src="./images/6.png" alt="" style="width:500px;height:200px;display: block;margin-left: auto;margin-right: auto"> 
-    </p>
+        Before visiting the page job.empline.thm, we need to add this subdomain to /etc/hosts file. </p>
+        <br>
+<img src="./images/6.png" alt="" style="width:500px;height:200px;display: block;margin-left: auto;margin-right: auto"> 
+    
     
     <br>
     <h4>5) Let's visit the page job.empline.thm</h4>
-    <img src="./images/24.png" alt="" style="width:500px;height:400px;display: block;margin-left: auto;margin-right: auto"> 
+    <p><img src="./images/24.png" alt="" style="width:500px;height:400px;display: block;margin-left: auto;margin-right: auto"></p> 
     <p>As we see, on this subdomain is running OpenCats which is a free and open source applicant tracking system (ATS) used to track job applicants. <br>
         - Name of application: OpenCats <br>
         - Version: 0.9.4 Countach</p>
@@ -118,7 +119,7 @@ Command: <pre class="bash"> ffuf -u http://empline.thm -c -w /usr/share/seclists
     
     <br>
     <h4>7) Let's visit the page: job.empline.thm/careers</h4>
-    <p> - After that enter “Show All Jobs” </p>
+    <p> - After that enter to “Show All Jobs” </p>
     <img src="./images/13.png" alt="" style="width:800px;height:300px;display: block;margin-left: auto;margin-right: auto"> 
     
     <p>- Then go to “Mobile Dev”</p>
@@ -134,43 +135,40 @@ Command: <pre class="bash"> ffuf -u http://empline.thm -c -w /usr/share/seclists
     <h1>========================</h1>
     <h1>Section 2: EXPLOITATION</h1>
     <h1>========================</h1>
-    <p>After googling, I found that this version of this application suffer from XML External Entity Injection vulnerability that allows unautheticated applicants to read             files on the running operating system after uploading a resume with .docx file. I found this on the following <a href="https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/">page</a>:</p>
-    <p> According to the tutorial on the page, we need to do the following steps: <br>
+    <p>After googling, I found that this version of this application suffer from XML External Entity Injection vulnerability that allows unautheticated applicants to read             files on the running operating system after uploading a resume with .docx file. I found this on the following <a href="https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/">page</a>. According to the tutorial on the page, we need to do the following steps: <br><br>
     1) Create a resume.docx file with sample text, e.g.: John Brown <br>
     2) Unzip the resume.docx file and modify the contents in “word/document.xml” </p>
 Command: <pre class="bash">unzip resume.docx </pre>
      <img src="./images/7.png" alt="" style="width:500px;height:300px;display: block;margin-left: auto;margin-right: auto">
     <h4>3) Modify and edit the word/document.xml file. Two modifications are needed. </h4>
-        <h4>3.1) Add this command under the first line to read /etc/passwd file. </h4><h4><br>
-       <p></p>
-        <img src="./images/9.png" alt="" style="width:800px;height:150px;display: block;margin-left: auto;margin-right: auto">
-    
-    </h4><h4>3.2) Find and change the name “John Brown” to &amp;test;</h4>
+        <h4>3.1) Add this command under the first line to read /etc/passwd file. </h4>      
+       <img src="./images/9.png" alt="" style="width:800px;height:150px;display: block;margin-left: auto;margin-right: auto">
+<br><h4>3.2) Find and change the name “John Brown” to &amp;test;</h4>
     <img src="./images/10.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto"> <br>
     <img src="./images/11.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
     
-    <h4>4) The modifications to document.xml need to be saved to the resume.docx file. </h4>    Command: <pre class="bash">zip resume.docx word/document.xml</pre>
+    <br><h4>4) The modifications to document.xml need to be saved to the resume.docx file. </h4>    Command: <pre class="bash">zip resume.docx word/document.xml</pre>
     <img src="./images/12.png" alt="" style="width:500px;height:50px;display: block;margin-left: auto;margin-right: auto">
     
-<h4>5) Now just upload the resume.docx file to opencats form.</h4>
+<br><h4>5) Now just upload the resume.docx file to opencats form.</h4>
     <img src="./images/17.png" alt="" style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto">
     <p>- Once the resume.docx file is uploaded then the contents of /etc/passwd was shown.</p>
     
-     <h4>6) Read sensitive file config.php</h4>               
+     <br><h4>6) Read sensitive file config.php</h4>               
      <p>At this point, we can use this technique to read some sensitive files which has credentials as a plaintext. One of these files is Opencats config.php file which contain a plaintext passowrds. To read this file to recover plaintext password, we need to base64 encode the contents. <br>
          <img src="./images/18.png" alt="" style="width:800px;height:80px;display: block;margin-left: auto;margin-right: auto"> <br>
          
          - zip the resume.docx file again and upload it to opencats page. <br>
-         <img src="./images/19.png" alt="" style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto"> <br> </p>
+         <br><img src="./images/19.png" alt="" style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto"> <br> </p>
          
                         <h4>7) Now lets decode the base64 encoded contents of config.php</h4>
-                        <p>- Create and copy the encoded contents to “config.php” file. Then decode it using “base64” tool. </p>
+                        <p>Create and copy the encoded contents to “config.php” file. Then decode it using “base64” tool. </p>
                             Command:<pre class="bash"> cat config.php | base64 -d </pre>
          
                         <h4>8) Credentials obtained from the decoded config.php file</h4>    
                         <img src="./images/26.png" alt="" style="width:500px;height:200px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h4>9) Using above creds, we can login to mysql server as user:james and password:ng6pUFvsGNtw</h4>
+                        <br><h4>9) Using above creds, we can login to mysql server as user:james and password:ng6pUFvsGNtw</h4>
                         Command:<pre class="bash"> mysql -h empline.thm -u james -p</pre>
     
                         <h4>10) Show all databases on this server</h4>
@@ -182,44 +180,44 @@ Command: <pre class="bash">unzip resume.docx </pre>
                         <h4>12) Show all tables in this database</h4>
                         <img src="./images/28.png" alt="" style="width:400px;height:200px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h4>13) Print user_name nad password columns from the “user” table </h4>
+                        <br><h4>13) Print user_name nad password columns from the “user” table </h4>
                         <img src="./images/29.png" alt="" style="width:400px;height:200px;display: block;margin-left: auto;margin-right: auto">
                         <p>- From above we get 3 users name with their hashed passwords</p>
                         
-                        <h4>14) Crack the passwords</h4>
+                        <br><h4>14) Crack the passwords</h4>
                        <p>In order to crack the hashes I used Crackstaion. <br>
                            user name: george <br>
                            hashed password: 86d0dfda99dbebc424eb4407947356ac  <br>
                            crack password:  pretonnevippasempre<br> </p>
                         
-                        <h4>15) Based on gathered creds we will try to login to SSH as george.</h4>
+                        <br><h4>15) Based on gathered creds we will try to login to SSH as george.</h4>
                         <p>- user: george <br>
                            - pass: pretonnevippasempre</p>
                         <p> Yeeesss !! We did it </p>
                         <img src="./images/20.png" alt="" style="width:800px;height:400px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h4>17) The user.txt file is under /home/george directory</h4>
+                        <br><h4>17) The user.txt file is under /home/george directory</h4>
                          <img src="./images/21.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h4>18) Read the user.txt file</h4>
+                        <br><h4>18) Read the user.txt file</h4>
                          <img src="./images/22.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h1>========================</h1>
+                        <h1>===============================</h1>
                         <h1>Section 3: PRIVELGE ESCALATION</h1>
-                        <h1>========================</h1>
+                        <h1>===============================</h1>
                         
                         <p>After a long search about misconfigurations in the system, finally I found the linux capabilities misconfiguration.</p>
                         
-                        <h4>1) Search about Linux capabilities</h4>
+                        <br><h4>1) Search about Linux capabilities</h4>
                         Command: <pre class="bash">getcap -r / 2&gt; /dev/null</pre>
                          <img src="./images/23.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
                         <p>- From the previous result we can see that “ruby" binary has the Linux cap_chown capability set. This capability allow  user to make arbitrary change to files UIDs and GIDs (full filesystem access). <br>
                             - So we can use chown function to change the user and group of /etc/shadow to be george/george. Then edit and modify the password of root.<br></p>
                         
-                        <h4>2) create a file with a malicious ruby code: exploit.rb</h4>
+                        <br><h4>2) create a file with a malicious ruby code: exploit.rb</h4>
                          <img src="./images/30.png" alt="" style="width:500px;height:100px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h4>3) run the script using ruby</h4>
+                        <br><h4>3) run the script using ruby</h4>
                         Command:<pre class="bash"> ruby exploit.rb</pre>
                         
                         <h4>4) create a new hashed password using openssl tool.</h4>
@@ -229,15 +227,15 @@ Command: <pre class="bash">unzip resume.docx </pre>
                             the password is: newpassword <br> <p></p>
                          <img src="./images/31.png" alt="" style="width:600px;height:80px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h4>5) then copy this hash and replace the root's hash in the /etc/shadow file</h4>
+                        <br><h4>5) then copy this hash and replace the root's hash in the /etc/shadow file</h4>
                          <img src="./images/32.png" alt="" style="width:600px;height:80px;display: block;margin-left: auto;margin-right: auto">
                         
-                        <h4>6) login as root with password "newpassword"</h4>
-                        Command:<pre class="bash"> su root</pre>
-                        
-                        <p>Congratulations!!! You are now ROOT !
-                            
-                        </p><h4>6) Read the /root/flag.txt file</h4>
+                        <br><h4>6) login as root with password "newpassword"</h4>
+                        Command:<pre class="bash"> su root</pre><p>
+    Congratulations!!! You are now ROOT ! </p>
+                        <br><h4>6) Read the /root/flag.txt file</h4>
+Command:
+<pre class="bash">cat /root/flag.txt</pre>
                         
                         
                     </div>
