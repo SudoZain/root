@@ -396,7 +396,7 @@ section.right-image {
 
 /* Simple Post */
 .simple-post {
-    margin-top: 80px;
+    margin-top: 0px;
 }
 
 .simple-post .container-fluid {
