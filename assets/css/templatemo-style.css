@@ -37,7 +37,8 @@ pre.bash {
   color: white;
   font-size: medium ; 
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-  display: inline; 
+  width: 100%;
+  display: inline-block;
 }
 
 h4 {
